@@ -2,7 +2,7 @@ import math
 import os
 from datetime import datetime
 
-# the text files have to be in the folder the program is run from
+#  text files
 GEAR_FILE = "gear.txt"
 PICKUP_FILE = "pickup_points.txt"
 CUSTOMER_FILE = "customers.txt"
