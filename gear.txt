@@ -1,0 +1,12 @@
+1#10x10 Pop-Up Canopy#Shade#6.00#Available#1#8#7
+2#48-Quart Rolling Cooler#Cooler#3.00#Available#2#12#11
+3#Folding Camp Chair#Seating#1.50#Available#1#30#30
+4#Bluetooth Party Speaker#Audio#4.50#Unavailable#3#5#0
+5#Beach Umbrella#Shade#2.50#Available#4#15#15
+6#Stadium Seat Cushion#Seating#1.00#Available#2#40#40
+7#Portable PA System#Audio#7.00#Available#4#4#4
+8#Folding Bench#Seating#2.00#Available#5#10#10
+9#Sideline Canopy 10x15#Shade#8.00#Available#2#6#6
+10#Bluetooth Mini Speaker#Audio#2.50#Available#6#10#10
+11#Soft-Sided Cooler Bag#Cooler#2.00#Available#7#20#20
+12#Canopy Side Wall#Shade#3.00#Available#10#10#10
