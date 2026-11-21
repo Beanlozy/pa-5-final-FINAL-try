@@ -24,7 +24,7 @@ LATE_FEE = 10.00
 STUDENT_DISCOUNT = 0.10
 STUDENT_EMAIL = "@crimson.ua.edu"
 GAME_DAY_RATE = 1.5
-# home-game Saturdays, change these to match the real schedule
+
 HOME_GAMES = ["09/05/2026", "09/19/2026", "10/31/2026", "11/14/2026", "11/21/2026"]
 
 
