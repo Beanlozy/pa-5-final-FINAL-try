@@ -28,7 +28,7 @@ GAME_DAY_RATE = 1.5
 HOME_GAMES = ["09/05/2026", "09/19/2026", "10/31/2026", "11/14/2026", "11/21/2026"]
 
 
-# record classes, one for each text file
+# record classes
 class Gear:
     def __init__(self, gear_id, item, gear_type, hourly_rate, status, pickup_id, total_units, units_available):
         self._gear_id = gear_id
@@ -243,8 +243,7 @@ class Rental:
     def set_status(self, status):
         self._status = status
 
-    # every started hour counts as a full hour
-    # 08:30 to 11:45 is 195 minutes, 195 / 60 = 3.25, rounded up to 4 hours
+    # every started hour counts as a full hour 08:30 to 11:45 is 195 minutes, 195 / 60 = 3.25, rounded up to 4 hours
     def calculate_cost(self, returned, hourly_rate):
         hours = math.ceil(self.minutes_out(returned) / 60)
         return hours, round(hours * hourly_rate, 2)
@@ -262,7 +261,7 @@ class Rental:
                 f"#{self._start}#{self._end}#{cost}#{self._status}")
 
 
-# everything is loaded once here, then every change saves right away
+# everything is loaded once here then every change saves right away
 def main():
     gear_list = load_gear()
     pickup_points = load_pickup_points()
@@ -291,7 +290,7 @@ def main():
             print("Invalid choice. Enter 1-4.")
 
 
-# input checks, each one keeps asking until the input is good
+# input checks each one keeps asking until the input is good
 def int_in_range(prompt, low, high):
     while True:
         try:
@@ -369,7 +368,6 @@ def get_date(prompt, default=None):
             print("Invalid date. Enter a real date in MM/DD/YYYY format.")
 
 
-# nt means Windows, cls clears the screen there and clear does it on Mac
 def pause():
     input("\nPress Enter to continue...")
     if os.name == "nt":
@@ -412,7 +410,7 @@ def read_records(file_name):
         return []
 
 
-# each line was split on # and the parts go into a new object  lists are sorted by ID so binary_search works on them
+# each line was split on # and the parts go into a new object lists are sorted by ID so binary_search works on them
 def load_gear():
     gear_list = []
     for parts in read_records(GEAR_FILE):
@@ -456,7 +454,7 @@ def save_file(file_name, records):
             file.write(record.to_line() + "\n")
 
 
-# bubble sort, keeps swapping records that are next to each other until every ID is in order
+# bubble sort 
 def sort_by_id(records):
     for i in range(len(records) - 1):
         for j in range(len(records) - 1 - i):
@@ -466,7 +464,7 @@ def sort_by_id(records):
                 records[j + 1] = temp
 
 
-# binary search, the list has to be sorted by ID each loop checks the middle record and throws away the half that can't have the ID
+# binary search
 def binary_search(records, target_id):
     low = 0
     high = len(records) - 1
@@ -735,7 +733,7 @@ def close_rental(rental, gear_list, rentals):
     print_receipt(gear.get_item(), rental.get_start(), end_text, hours, rate, extras, rental.get_cost())
 
 
-# extras holds the game day, discount and late fee lines (it can be empty)
+# extras holds the game day recepits
 def print_receipt(item, start, end, hours, rate, extras, cost):
     print_heading("Rental Complete")
     print(f"Gear: {item}")
@@ -991,7 +989,7 @@ def deactivate_customer(customers):
     print(f"{customer.get_first_name()} {customer.get_last_name()} is now Inactive.")
 
 
-# every report returns a list of lines, the menu prints them and can save them
+# every report returns a list of lines the menu prints them and can save them
 def reports_menu(gear_list, pickup_points, rentals):
     while True:
         print_menu("Reports", ["Daily rentals", "Gear currently out", "Overdue rentals",
@@ -1068,7 +1066,7 @@ def overdue_report(rentals, gear_list):
 
 
 def popular_gear_report(rentals, gear_list):
-    # count the rentals for each item, then sort the [count, item] pairs so the biggest count is first
+    # count the rentals for each item then sort the [count, item] pairs so the biggest count is first
     pairs = []
     for gear in gear_list:
         count = 0
